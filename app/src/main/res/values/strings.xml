@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ListProject</string>
+    <string name="list_text">List\nPress + to add and long press to delete and update</string>
+</resources>
