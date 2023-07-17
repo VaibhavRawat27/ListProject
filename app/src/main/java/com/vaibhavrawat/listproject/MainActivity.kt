@@ -26,17 +26,19 @@ class MainActivity : AppCompatActivity() {
         binding.listView.adapter = adapter
         binding.fab.setOnClickListener {
             val dialog = Dialog(this)
-            dialog.setContentView(R.layout.custom_layout_add)
+            dialog.setContentView(R.layout.custom_layout_update)
             dialog.setCancelable(false)
-            val btnAdd: Button = dialog.findViewById(R.id.btnAdd)
-            val etData: EditText = dialog.findViewById(R.id.etData)
+            val btnUpdate: Button = dialog.findViewById(R.id.btnUpdate)
+            val etNewData: EditText = dialog.findViewById(R.id.etNewData)
             val btnCancel : Button = dialog.findViewById(R.id.btnCancel)
-
-            btnAdd.setOnClickListener {
-                if (etData.text.toString().isEmpty()) {
-                    etData.error = "Please fill the field!"
+            val tvMainInfo : TextView = dialog.findViewById(R.id.tvMainInfo)
+            tvMainInfo.text = "Add data"
+            etNewData.hint = "Data"
+            btnUpdate.setOnClickListener {
+                if (etNewData.text.toString().isEmpty()) {
+                    etNewData.error = "Please fill the field!"
                 } else {
-                    adapter.add(etData.text.toString())
+                    adapter.add(etNewData.text.toString())
                     Toast.makeText(this,"Data added successfully",Toast.LENGTH_SHORT).show()
                     adapter.notifyDataSetChanged()
                     dialog.dismiss()
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             }
             dialog.show()
         }
+
 
         binding.listView.setOnItemLongClickListener { _, _, position, _ ->
             val alertDialog = AlertDialog.Builder(this)
